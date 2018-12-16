@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "271325980267",
+    "firebase_url": "https://smart-feeder-1d272.firebaseio.com",
+    "project_id": "smart-feeder-1d272",
+    "storage_bucket": "smart-feeder-1d272.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271325980267:android:f64376fbbed54271",
+        "android_client_info": {
+          "package_name": "com.example.shane.smartfeeder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271325980267-75kscds1s3iih10kstp7hnd7517m133r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzkqLlEFoDAYQ4QThp8rUcVfM8KGLz7xM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
