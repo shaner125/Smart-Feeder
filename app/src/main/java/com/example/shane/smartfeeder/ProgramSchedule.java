@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +25,7 @@ import java.util.List;
 
 public class ProgramSchedule extends AppCompatActivity {
 
-
+    private FirebaseAuth auth;
     private DatabaseReference mDatabase ;
     ListView listview;
     static String[] ListElements = new String[]{};
@@ -41,18 +42,26 @@ public class ProgramSchedule extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_program_schedule);
+
         final ArrayAdapter< String > adapter = new ArrayAdapter < String >
                 (ProgramSchedule.this, android.R.layout.simple_list_item_1,
                         ListElementsArrayList);
+
+        auth = FirebaseAuth.getInstance();
+        btnGet=(Button)findViewById(R.id.button1);
+        btnGet.setVisibility(View.GONE);
         btnBack=(Button)findViewById(R.id.btn_back);
+        btnAddTime=(Button)findViewById(R.id.btn_addTime);
         btnRemoveTime=(Button)findViewById(R.id.btn_removeTime);
         picker=(TimePicker)findViewById(R.id.timePicker1);
         picker.setIs24HourView(true);
-        btnAddTime=(Button)findViewById(R.id.btn_addTime);
+        listview = (ListView) findViewById(R.id.listView1);
+        listview.setAdapter(adapter);
 
         picker.setVisibility(View.GONE);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("data").child("feeding_schedule");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("data").child(auth.getUid()).child("feeding_schedule");
         mDatabase.addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 try {
@@ -74,6 +83,7 @@ public class ProgramSchedule extends AppCompatActivity {
                             e.printStackTrace();
                         }
                     } else {
+                        btnRemoveTime.setVisibility(View.GONE);
                         Log.e("TAG", " it's null. dumb dumb");
                     }
                 } catch (Exception e) {
@@ -88,24 +98,7 @@ public class ProgramSchedule extends AppCompatActivity {
 
         });
 
-
-
-
-
-
-
-
-
-        listview = (ListView) findViewById(R.id.listView1);
-        listview.setAdapter(adapter);
-
-
-
-
-
         btnRemoveTime.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
             try{
@@ -127,8 +120,6 @@ public class ProgramSchedule extends AppCompatActivity {
         });
 
         btnAddTime.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
                 listview.setVisibility((listview.getVisibility() == View.VISIBLE)
@@ -154,8 +145,6 @@ public class ProgramSchedule extends AppCompatActivity {
             }
         });
 
-        btnGet=(Button)findViewById(R.id.button1);
-        btnGet.setVisibility(View.GONE);
         btnGet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
