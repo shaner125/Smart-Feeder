@@ -19,8 +19,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class ProgramSchedule extends AppCompatActivity {
@@ -161,7 +164,20 @@ public class ProgramSchedule extends AppCompatActivity {
 
 
                 boolean exists = false;
-                tvw = (minute<10) ? hour +":0"+ minute:hour +":"+ minute;
+
+                if ((hour<10) && (minute<10)){
+                    tvw = "0"+hour+":0"+minute;
+                }
+                else if ((hour<10) && (minute>10)){
+                    tvw = "0"+hour+":"+minute;
+                }
+                else if((hour>10) && (minute<10)){
+                    tvw = hour+":0"+minute;
+                }
+                else{
+                    tvw = hour+":"+minute;
+                }
+
                 for(String match : ListElementsArrayList){
                     if (match.equals(tvw)){
                         Log.e("TAG", "That feed time already exists!");
@@ -171,8 +187,27 @@ public class ProgramSchedule extends AppCompatActivity {
                     }
                 }
                 if (!exists){
-                    Log.e("TAG", "Adding feed time!");
-                    mDatabase.child(""+(ListElementsArrayList.size()+1)).setValue(tvw);
+                    if (ListElementsArrayList.size()>0) {
+                        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+                        try {
+                            Date previousTime = sdf.parse(ListElementsArrayList.get(ListElementsArrayList.size() - 1));
+                            Date currentTime = sdf.parse(tvw);
+
+                            if (previousTime.getTime() > currentTime.getTime()) {
+                                Log.e("TAG", "Please restructure feeding times!");
+                                Toast.makeText(ProgramSchedule.this, "Please restructure feeding times from earliest to latest!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Log.e("TAG", "Adding feed time!");
+                                mDatabase.child("" + (ListElementsArrayList.size() + 1)).setValue(tvw);
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else{
+                        Log.e("TAG", "Adding feed time!");
+                        mDatabase.child("" + (ListElementsArrayList.size() + 1)).setValue(tvw);
+                    }
                 }
 
                 listview.setVisibility((listview.getVisibility() == View.INVISIBLE)

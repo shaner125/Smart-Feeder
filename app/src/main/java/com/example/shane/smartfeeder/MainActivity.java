@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ProgramSchedule.class));
             }
         });
-//
-//        btnOpenStream.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this,OpenLiveStream.class));
-//            }
-//        });
-//
+
+        btnOpenStream.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,activity_livestream.class));
+            }
+        });
+
         btnViewClips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
