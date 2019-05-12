@@ -32,7 +32,14 @@
     <string name="forgot_password_msg">We just need your registered Email Id to sent you password reset instructions.</string>
     <string name="program_feeding_schedule">Program Feeding Schedule</string>
     <string name="open_live_stream">Open Live Stream</string>
-    <string name="pet_recognition">Pet Recognition</string>
+    <string name="Setup">Setup</string>
     <string name="view_pet_clips">View Pet Clips</string>
     <string name="todo">TODO</string>
+    <string name="dog_on">Dog Selected</string>
+    <string name="cat_on">Cat Selected</string>
+    <string name="dog_off">Choose Dog</string>
+    <string name="cat_off">Choose Cat</string>
+    <string name="small">Small</string>
+    <string name="medium">Medium</string>
+    <string name="large">Large</string>
 </resources>

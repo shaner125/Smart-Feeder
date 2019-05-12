@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.shane.smartfeeder.SetupActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_horizontal_margin">
+
+
+            <ImageView
+                android:layout_width="@dimen/logo_w"
+                android:layout_height="@dimen/logo_h"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/todo" />
+
+            <TextView
+                android:id="@+id/pet_select_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Select Pet Type:"
+                android:textColor="@color/accutextcolor"/>
+
+            <!-- Login Button -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_dog_on"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/addTime"
+                    android:text="@string/dog_on"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_dog_off"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.5"
+                    android:background="@color/red"
+                    android:text="@string/dog_off"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_cat_off"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dip"
+                    android:layout_weight="0.5"
+                    android:background="@color/red"
+                    android:text="@string/cat_off"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_cat_on"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dip"
+                    android:layout_weight="0.5"
+                    android:background="@color/addTime"
+                    android:text="@string/cat_on"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/size_select_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Select Feeding Size:"
+                android:textColor="@color/accutextcolor"/>
+
+            <Button
+                android:id="@+id/btn_smallOn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/addTime"
+                android:text="@string/small"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_smallOff"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/red"
+                android:text="@string/small"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_mediumOn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/addTime"
+                android:text="@string/medium"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_mediumOff"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/red"
+                android:text="@string/medium"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_largeOn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/addTime"
+                android:text="@string/large"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_largeOff"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/red"
+                android:text="@string/large"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:background="@color/accutextcolor"
+                android:text="@string/btn_back"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

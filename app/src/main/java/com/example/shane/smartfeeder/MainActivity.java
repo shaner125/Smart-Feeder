@@ -2,7 +2,7 @@ package com.example.shane.smartfeeder;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         btnOpenStream = (Button) findViewById(R.id.btn_open_live_stream);
         btnLogout = (Button) findViewById(R.id.btn_logout);
         btnViewClips = (Button) findViewById(R.id.btn_ViewClips);
-        btnPetRecognition = (Button) findViewById(R.id.btn_petRecognition);
+        btnPetRecognition = (Button) findViewById(R.id.btn_Setup);
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         btnOpenStream.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,activity_livestream.class));
+                startActivity(new Intent(MainActivity.this, LiveStreamActivity.class));
             }
         });
 
@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, ViewStoredClips.class));
             }
         });
-//
-//        btnPetRecognition.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainActivity.this, PetRecognition.class));
-//            }
-//        });
+
+        btnPetRecognition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SetupActivity.class));
+            }
+        });
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -2,8 +2,8 @@ package com.example.shane.smartfeeder;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -31,11 +31,10 @@ public class ProgramSchedule extends AppCompatActivity {
     private FirebaseAuth auth;
     private DatabaseReference mDatabase ;
     ListView listview;
-    static String[] ListElements = new String[]{};
     TimePicker picker;
     Button btnGet, btnAddTime, btnRemoveTime, btnBack;
     String tvw;
-    static int previousHour, previousMin;
+    static String[] ListElements = new String[]{};
     public static List< String > ListElementsArrayList = new ArrayList< String >
             (Arrays.asList(ListElements));
 

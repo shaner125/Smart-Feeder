@@ -20,4 +20,5 @@
     <color name="btn_logut_bg">#ff6861</color>
     <color name="accutextcolor">#97220e</color>
     <color name="addTime">#33cc33</color>
+    <color name="red">#ff0000</color>
 </resources>
