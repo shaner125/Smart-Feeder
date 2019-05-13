@@ -17,22 +17,47 @@
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
-        <ListView
-            android:id="@+id/listView1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/button1"
-            android:layout_centerHorizontal="true"></ListView>
+        <ImageView
+            android:layout_width="@dimen/logo_gal_w"
+            android:layout_height="@dimen/logo_gal_h"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/todo" />
 
         <VideoView
             android:id="@+id/videoView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true" />
 
+        <TextView
+            android:id="@+id/ViewClips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="Stored Clips:"
+            android:textColor="@color/accutextcolor"/>
+
+
+        <ListView
+            android:id="@+id/listView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/button1"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="53dp" />
+            android:textColor="@color/accutextcolor"></ListView>
 
-
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/accutextcolor"
+            android:text="@string/btn_back"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

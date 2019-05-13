@@ -61,7 +61,7 @@ public class ProgramSchedule extends AppCompatActivity {
         listview.setAdapter(adapter);
 
         picker.setVisibility(View.GONE);
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("data").child(auth.getUid()).child("feeding_schedule");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("data").child("user").child("feeding_schedule");
         mDatabase.addValueEventListener(new ValueEventListener() {
 
             @Override

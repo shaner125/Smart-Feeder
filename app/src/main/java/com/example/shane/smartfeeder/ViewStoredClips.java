@@ -1,6 +1,7 @@
 package com.example.shane.smartfeeder;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.VideoView;
 
@@ -23,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,17 +41,20 @@ public class ViewStoredClips extends AppCompatActivity {
     static String[] ListElements = new String[]{};
     public static List< String > ListElementsArrayList = new ArrayList< String >
             (Arrays.asList(ListElements));
+    Button btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_stored_clips);
         videoViewLandscape= (VideoView) findViewById(R.id.videoView1);
+        videoViewLandscape.setVisibility(View.GONE);
         final ArrayAdapter< String > adapter = new ArrayAdapter < String >
                 (ViewStoredClips.this, android.R.layout.simple_list_item_1,
                         ListElementsArrayList);
         listview = (ListView) findViewById(R.id.listView1);
         listview.setAdapter(adapter);
+        btnBack = (Button)findViewById(R.id.btn_back);
         mDatabase = FirebaseDatabase.getInstance().getReference().child("medialinks");
         mDatabase.addValueEventListener(new ValueEventListener() {
 
@@ -62,7 +66,7 @@ public class ViewStoredClips extends AppCompatActivity {
                             Log.e("TAG", "" + snapshot.getValue()); // your name values you will get here
                             ListElementsArrayList.clear();
                             for(DataSnapshot child : snapshot.getChildren() ){
-                                ListElementsArrayList.add(child.getValue().toString());
+                                ListElementsArrayList.add(0,child.getValue().toString());
                                 adapter.notifyDataSetChanged();
                                 Log.e("TAG", "" + ListElementsArrayList.toString());
                             }
@@ -92,6 +96,7 @@ public class ViewStoredClips extends AppCompatActivity {
                 storageRef.child(data).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
+                        videoViewLandscape.setVisibility(View.VISIBLE);
                         videoViewLandscape.setVideoURI(uri);
                         videoViewLandscape.requestFocus();
                         videoViewLandscape.start();
@@ -102,6 +107,21 @@ public class ViewStoredClips extends AppCompatActivity {
                         Log.e("TAG", "NOT WORKINGGGGGGG");
                     }
                 });
+            }
+        });
+
+        videoViewLandscape.setOnCompletionListener(new MediaPlayer.OnCompletionListener(){
+            @Override
+            public void onCompletion(MediaPlayer mp){
+                mp.stop();
+                videoViewLandscape.setVisibility(View.GONE);
+            }
+        });
+
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

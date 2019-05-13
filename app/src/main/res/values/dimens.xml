@@ -6,4 +6,6 @@
     <dimen name="logo_w_h">100dp</dimen>
     <dimen name="logo_w">400dp</dimen>
     <dimen name="logo_h">300dp</dimen>
+    <dimen name="logo_gal_w">200dp</dimen>
+    <dimen name="logo_gal_h">150dp</dimen>
 </resources>
